@@ -6,24 +6,29 @@
 
 First, clone the repository to your local machine:
 
-```bash
+```shell
 git clone https://github.com/anshu-raj-123/TextToSpeech.git
 cd frontend-task
+```
 
-## Install Dependencies
+### 2. Install Dependencies
 
+```shell
+npm install
+```
 
-### `npm install`
+### 3. Set Up Environment Variables
 
-## Set Up Environment Variables
+```shell
+ REACT_APP_API_URL=https://your-api-url.com
+ REACT_APP_GOOGLE_API_KEY=google-api-key
+```
 
-### REACT_APP_API_URL=https://your-api-url.com
-###REACT_APP_GOOGLE_API_KEY=google-api-key
+### 4. Run the Application
 
-## Run the Application
-
-### `npm start
-
+```shell
+npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -31,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-your-repository/
+frontend-task/
 ├── public/
 │   ├── index.html
 │   └── ...
@@ -43,10 +48,10 @@ your-repository/
 │   ├── config.js
 │   ├── App.js
 │   ├── index.js
-│   └── ...
+│   
 ├── .env
 ├── package.json
 ├── README.md
-└── ...
+
 
 

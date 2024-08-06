@@ -20,8 +20,8 @@ npm install
 ### 3. Set Up Environment Variables
 
 ```shell
- REACT_APP_API_URL=https://your-api-url.com
- REACT_APP_GOOGLE_API_KEY=google-api-key
+ REACT_APP_API_URL=https://api-url.com
+ REACT_APP_API_KEY=google-api-key
 ```
 
 ### 4. Run the Application

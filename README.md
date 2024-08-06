@@ -48,10 +48,12 @@ frontend-task/
 │   ├── config.js
 │   ├── App.js
 │   ├── index.js
-│   
+│   └── ...
 ├── .env
 ├── package.json
 ├── README.md
+└── ...
+
 
 
 

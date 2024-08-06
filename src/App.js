@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ChatBox from './components/ChatBox';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div style={{ padding: '16px', backgroundColor: 'lightblue' }}>
+  <h1 style={{ fontSize: '24px', marginBottom: '16px' }}>Select Characters</h1>
+  <ChatBox />
+</div>
+
   );
-}
+};
 
 export default App;

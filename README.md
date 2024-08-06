@@ -36,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-your-repository/
+frontend-task/
 ├── public/
 │   ├── index.html
 │   └── ...
@@ -48,12 +48,10 @@ your-repository/
 │   ├── config.js
 │   ├── App.js
 │   ├── index.js
-│   └── ...
+│   
 ├── .env
 ├── package.json
 ├── README.md
-└── ...
-
 
 
 

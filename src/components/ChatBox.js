@@ -12,7 +12,7 @@ import {
 import { Button } from "../components/ui/button";
 
 const ChatBox = () => {
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState({ character1: '', character2: '' });
   const [conversation, setConversation] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState("");
@@ -22,21 +22,21 @@ const ChatBox = () => {
   const genAI = new GoogleGenerativeAI(apiKey);
 
   const handleGenerate = async () => {
-    if (characters.length < 2) {
-      alert("Please select at least two characters.");
+    const { character1, character2 } = characters;
+
+    if (!character1 || !character2) {
+      alert("Please enter both character names.");
       return;
     }
-
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const prompt = `Generate a short rap between two characters. Each character should have a couple of lines, and each line should be concise. Use the following placeholders for the characters' names: Don't give anything other than the dialogues. Don't explain your answer: Character 1: ${characters[0]}\nCharacter 2: ${characters[1]}`;
+    const prompt = `Generate a short rap(like real and there should be atlest 8 chat) between two characters. Each character should have a couple of lines, and each line should be concise. Use the following placeholders for the characters' names: Don't give anything other than the dialogues. Don't explain your answer: Use the following placeholders for the characters' names: Character 1: ${character1}\nCharacter 2: ${character2}`;
 
     try {
       const result = await model.generateContent(prompt);
       const response = result.response;
       const generatedText = response.text();
       console.log(generatedText);
-
       setConversation(generatedText.split("\n"));
     } catch (error) {
       console.error("Error generating conversation:", error);

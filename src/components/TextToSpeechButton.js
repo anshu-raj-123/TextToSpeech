@@ -1,16 +1,17 @@
-const TextToSpeechButton = ({ text, audioCache }) => {
-  const handleClick = async () => {
-    const audioUrl = audioCache[text];
-    if (audioUrl) {
-      const audio = new Audio(audioUrl);
-      audio.play();
-    } else {
-      console.error("Audio URL not found in cache.");
-    }
+import { useState } from 'react';
+
+const TextToSpeechButton = ({ text }) => {
+  const handleClick = () => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.voice = speechSynthesis.getVoices().find(voice => voice.name === 'Microsoft Indian English');
+    speechSynthesis.speak(utterance);
   };
 
   return (
-    <button onClick={handleClick} className='p-2 bg-green-500 text-white rounded'>
+    <button
+      onClick={handleClick}
+      className='p-2 bg-green-500 text-white rounded'
+    >
       Play
     </button>
   );

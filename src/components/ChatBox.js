@@ -1,14 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import TextToSpeechButton from "./TextToSpeechButton";
 import CharacterSelector from "./CharacterSelector";
 import { Input } from "../components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 
 const ChatBox = () => {
@@ -16,7 +11,6 @@ const ChatBox = () => {
   const [conversation, setConversation] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState("");
-  const [audioCache, setAudioCache] = useState({});
 
   const apiKey = process.env.REACT_APP_API_KEY;
   const genAI = new GoogleGenerativeAI(apiKey);
@@ -42,44 +36,6 @@ const ChatBox = () => {
       console.error("Error generating conversation:", error);
     }
   };
-  const apiUrl= process.env.REACT_APP_API_URL
-
-  useEffect(() => {
-    const cacheAudio = async (text) => {
-      try {
-        const response = await fetch(apiUrl,{
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer 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",
-            },
-            body: JSON.stringify({
-              inputs: {
-                text,
-                language: "en",
-                model_id: "3ccb64b4-8a8b-4abe-ab73-40a2ea307b08",
-              },
-            }),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("API response not ok");
-        }
-
-        const data = await response.json();
-        setAudioCache((prev) => ({ ...prev, [text]: data.s3_path }));
-      } catch (error) {
-        console.error("Error with API:", error);
-      }
-    };
-
-    conversation.forEach((line) => {
-      if (!audioCache[line]) {
-        cacheAudio(line);
-      }
-    });
-  }, [conversation, audioCache]);
 
   const handleEdit = (index) => {
     setEditingIndex(index);
@@ -142,7 +98,7 @@ const ChatBox = () => {
                   Edit
                 </Button>
               )}
-              <TextToSpeechButton text={line} audioCache={audioCache} />
+              <TextToSpeechButton text={line} />
             </div>
           ))}
         </CardContent>
